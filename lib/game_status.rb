@@ -11,24 +11,22 @@ WIN_COMBINATIONS = [
 # Helper Method
 
 board = ["X","X","X","X","X"," X","O","X","O"]
-win = [" ", " ", " "]
+winner_array = [" ", " ", " "]
 
 def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
 
 def won?(board)
-  win = [" ", " ", " "]
+
    full?(board)
     cnt = 0
     until cnt == 8
       if ((board[WIN_COMBINATIONS[cnt][0]] == "X" && board[WIN_COMBINATIONS[cnt][1]] == "X" && board[WIN_COMBINATIONS[cnt][2]] == "X")  ||
           (board[WIN_COMBINATIONS[cnt][0]] == "O" && board[WIN_COMBINATIONS[cnt][1]] == "O" && board[WIN_COMBINATIONS[cnt][2]] == "O"))
-           puts  "this s  #{WIN_COMBINATIONS[cnt]}"
-    
-           puts "winssss   #{win}"
-           return
-
+           winner_array = WIN_COMBINATIONS[cnt]
+           puts "winssss   #{winner_array}"
+           return  winner_array
       end
       cnt += 1
       puts cnt
@@ -44,6 +42,7 @@ def  full?(board)
 end
 
 def draw?(board)
+
   if !won?(board) && full?(board)
     return true
   elsif !won?(board) && !full?(board) || !won?(board)
@@ -62,7 +61,7 @@ end
 def winner(board)
   index = 0
   if won?(board)
-    puts "winnnnnnnnnnnnnnnnn #{win}"
+    puts "winnnnnnnnnnnnnnnnn #{winner}"
     index = win[0]
     puts " index #{index}"
     puts board[index]
