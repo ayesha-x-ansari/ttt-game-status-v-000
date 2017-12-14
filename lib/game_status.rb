@@ -41,7 +41,6 @@ end
 #        return false
 #      end
 #    end
-end
 
 def  full?(board)
     board.none?{|x| x == "" || x == " " || x = nil}
