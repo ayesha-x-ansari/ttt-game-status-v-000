@@ -68,6 +68,8 @@ end
 
 def winner(board)
   if winner_array = won?(board)
+    puts "winner aray"
+    puts "winner #{winner_array}"
     puts board[winner_array[0]]
   else
     return nil
