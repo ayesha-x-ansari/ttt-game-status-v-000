@@ -64,7 +64,7 @@ def winner(board)
     puts "winnnnnnnnnnnnnnnnn #{winner_array}"
     index = winner_array[0]
     puts " indexssssssssssssssssss #{index}"
-    puts board[index]
+    puts board[winner_array[0]]
     return board[index]
   else
     return nil
