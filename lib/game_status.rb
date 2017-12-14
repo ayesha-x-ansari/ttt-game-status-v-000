@@ -61,11 +61,11 @@ end
 def winner(board)
   index = 0
   if winner_array = won?(board)
-    puts "winnnnnnnnnnnnnnnnn #{winner}"
-    index = winner_array[0]
-    puts " index #{index}"
-    puts board[index]
-    return board[index]
+    puts "winnnnnnnnnnnnnnnnn #{winner_array}"
+#    index = winner_array[0]
+#    puts " index #{index}"
+#    puts board[index]
+#    return board[index]
   else
     return nil
   end
