@@ -62,7 +62,7 @@ def winner(board)
   index = 0
   if won?(board)
     puts "winnnnnnnnnnnnnnnnn #{winner}"
-    index = win[0]
+    index = winner_array[0]
     puts " index #{index}"
     puts board[index]
     return board[index]
