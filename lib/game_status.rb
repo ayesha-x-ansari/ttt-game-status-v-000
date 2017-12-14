@@ -20,11 +20,9 @@ end
 def won?(board)
   def won?(board)
   winner_array = WIN_COMBINATIONS.detect do |combo|
-    puts combo
     board[combo[0]] == board[combo[1]] &&
     board[combo[1]] == board[combo[2]] &&
     position_taken?(board, combo[0])
-    puts "combo  #{combo}"
   end
 end
 
