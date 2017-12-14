@@ -1,6 +1,75 @@
+WIN_COMBINATIONS = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [2,4,6]
+]
 # Helper Method
+
+board = ["X","X","X","X","X"," X","O","X","O"]
+win = [" ", " ", " "]
+
 def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
 
-# Define your WIN_COMBINATIONS constant
+def won?(board)
+  win = [" ", " ", " "]
+   full?(board)
+    cnt = 0
+    until cnt == 8
+      if ((board[WIN_COMBINATIONS[cnt][0]] == "X" && board[WIN_COMBINATIONS[cnt][1]] == "X" && board[WIN_COMBINATIONS[cnt][2]] == "X")  ||
+          (board[WIN_COMBINATIONS[cnt][0]] == "O" && board[WIN_COMBINATIONS[cnt][1]] == "O" && board[WIN_COMBINATIONS[cnt][2]] == "O"))
+           puts  "this s  #{WIN_COMBINATIONS[cnt]}"
+    
+           puts "winssss   #{win}"
+           return
+
+      end
+      cnt += 1
+      puts cnt
+      if cnt == 8
+        return false
+      end
+    end
+end
+
+
+def  full?(board)
+    board.none?{|x| x == "" || x == " " || x = nil}
+end
+
+def draw?(board)
+  if !won?(board) && full?(board)
+    return true
+  elsif !won?(board) && !full?(board) || !won?(board)
+    return false
+  end
+end
+
+def over?(board)
+  if (won?(board) || full?(board) || draw?(board))  || (won?(board) && !full?(board))
+    return true
+  else
+    return false
+  end
+end
+
+def winner(board)
+  index = 0
+  if won?(board)
+    puts "winnnnnnnnnnnnnnnnn #{win}"
+    index = win[0]
+    puts " index #{index}"
+    puts board[index]
+    return board[index]
+  else
+    return nil
+  end
+end
+
+winner(board)
