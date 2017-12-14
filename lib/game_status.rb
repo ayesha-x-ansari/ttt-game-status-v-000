@@ -18,24 +18,31 @@ def position_taken?(board, index)
 end
 
 def won?(board)
-
-   full?(board)
-    cnt = 0
-    until cnt == 8
-      if ((board[WIN_COMBINATIONS[cnt][0]] == "X" && board[WIN_COMBINATIONS[cnt][1]] == "X" && board[WIN_COMBINATIONS[cnt][2]] == "X")  ||
-          (board[WIN_COMBINATIONS[cnt][0]] == "O" && board[WIN_COMBINATIONS[cnt][1]] == "O" && board[WIN_COMBINATIONS[cnt][2]] == "O"))
-           winner_array = WIN_COMBINATIONS[cnt]
-           puts "winssss   #{winner_array}"
-           return  winner_array
-      end
-      cnt += 1
-      puts cnt
-      if cnt == 8
-        return false
-      end
-    end
+  def won?(board)
+  WIN_COMBINATIONS.detect do |combo|
+    board[combo[0]] == board[combo[1]] &&
+    board[combo[1]] == board[combo[2]] &&
+    position_taken?(board, combo[0])
+  end
 end
 
+
+#   full?(board)
+#    cnt = 0
+#    until cnt == 8
+#      if ((board[WIN_COMBINATIONS[cnt][0]] == "X" && board[WIN_COMBINATIONS[cnt][1]] == "X" && board[WIN_COMBINATIONS[cnt][2]] == "X")  ||
+#          (board[WIN_COMBINATIONS[cnt][0]] == "O" && board[WIN_COMBINATIONS[cnt][1]] == "O" && board[WIN_COMBINATIONS[cnt][2]] == "O"))
+#           winner_array = WIN_COMBINATIONS[cnt]
+#           puts "winssss   #{winner_array}"
+#           return  winner_array
+#      end
+#      cnt += 1
+#      puts cnt
+#      if cnt == 8
+#        return false
+#      end
+#    end
+end
 
 def  full?(board)
     board.none?{|x| x == "" || x == " " || x = nil}
@@ -59,13 +66,8 @@ def over?(board)
 end
 
 def winner(board)
-  index = 0
   if winner_array = won?(board)
-    puts "winnnnnnnnnnnnnnnnn #{winner_array}"
-    index = winner_array[0]
-    puts " indexssssssssssssssssss #{index}"
     puts board[winner_array[0]]
-    return board[index]
   else
     return nil
   end
